@@ -1,4 +1,3 @@
-from selenium.webdriver.common.by import By
 from pages.login_page import LoginPage
 
 def test_successful_login(driver):
@@ -21,9 +20,9 @@ def test_incorrect_username(driver):
     login_page.click_login()
     
     # Verify incorrect username by checking for an error message
-    error_warning = driver.find_element(By.ID, "error")
-    assert error_warning.is_displayed()  # Checks if the error message is displayed
-    assert error_warning.text == "Your username is invalid!"  # Validates the specific error message for incorrect username
+    error_warning = login_page.get_error_message()
+    assert error_warning is not None  # Checks if an error message is displayed
+    assert error_warning == "Your username is invalid!"  # Validates the specific error message for incorrect username
 
 def test_incorrect_password(driver):
     driver.get("https://practicetestautomation.com/practice-test-login/")
@@ -33,6 +32,6 @@ def test_incorrect_password(driver):
     login_page.click_login()
     
     # Verify incorrect login by checking for an error message
-    error_warning = driver.find_element(By.ID, "error")
-    assert error_warning.is_displayed()  # Checks if the error message is displayed
-    assert error_warning.text == "Your password is invalid!"  # Validates the specific error message for incorrect password
+    error_warning = login_page.get_error_message()
+    assert error_warning is not None  # Checks if an error message is displayed
+    assert error_warning == "Your password is invalid!"  # Validates the specific error message for incorrect password
