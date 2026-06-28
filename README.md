@@ -1,5 +1,5 @@
-👋 Hi, I'm @clarkgab </br>
-👀 I’m interested in full stack web development, but if I had to choose I prefer back-end development a <em>little</em> bit more. </br>
-📖 I have experience developing from scratch, and also using web app frameworks such as Laravel and Phalcon. </br>
-🌱 I’m currently refreshing my web development skills and learning about Vue, and looking to study REST APIs next. </br>
-📫 You may contact me by email at gabemerclark@gmail.com
+👋 Hi, I'm @emergabrillo </br>
+👀 I'm learning Selenium for automation! I'll update this readme once I'm satisfied with my progress
+📖 I have 3 years of manual QA experience and I'm currently upskilling
+🌱 Full-stack web development was my foundation, but life is quite unpredictable 🤣
+📫 You may contact me by email at emcleegab@gmail.com
