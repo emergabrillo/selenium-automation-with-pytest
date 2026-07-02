@@ -6,7 +6,6 @@ class InventoryPage(BasePage):
     # Locators for the inventory page elements
     PRODUCT_CARDS = (By.CLASS_NAME, "inventory_item")
     ADD_TO_CART_BUTTONS = (By.CLASS_NAME, "btn_inventory")
-    REMOVE_FROM_CART_BUTTONS = (By.CLASS_NAME, "btn_remove")
     SHOPPING_CART_LINK = (By.CLASS_NAME, "shopping_cart_link")
     SHOPPING_CART_BADGE = (By.CLASS_NAME, "shopping_cart_badge")
 
@@ -33,3 +32,10 @@ class InventoryPage(BasePage):
             return int(cart_badge.text)  # Returns the count as an integer
         except:
             return 0  # Returns 0 if the cart is empty or the badge is not found
+
+    def click_remove_from_cart(self, product_name):
+        """Clicks the 'Remove' button for a specific product in the cart."""
+        product_card = self.get_product_card_by_name(product_name)
+        if product_card:
+            remove_button = product_card.find_element(*self.ADD_TO_CART_BUTTONS)  # Assuming the same button toggles between 'Add to Cart' and 'Remove'
+            remove_button.click()
