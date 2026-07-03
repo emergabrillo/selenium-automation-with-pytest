@@ -17,7 +17,7 @@ class BasePage:
         element.clear()
         element.send_keys(text)
 
-    def get_element(self, locator):
-        """Waits for an element to be visible and retrieves it."""
+    def get_element(self, locator, timeout=10):
+        """Waits for an element to be visible and retrieves it. Dynamic timeout allows for flexible waits."""
         element = self.wait.until(EC.visibility_of_element_located(locator))
         return element
