@@ -24,7 +24,7 @@ class LoginPage(BasePage):
     def get_error_message(self):
         """Retrieves the error message displayed on the login page, once displayed."""
         try:
-            error_element = self.get_element(self.ERROR_MESSAGE)  # Waits for the error message to be visible
-            return error_element.text  # Returns the text of the error message if present
+            error_element = self.get_element(self.ERROR_MESSAGE, timeout=1.5)
+            return error_element.text
         except:
             return None  # Returns None if no error message is found
