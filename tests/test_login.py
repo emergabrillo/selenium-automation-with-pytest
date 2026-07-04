@@ -1,10 +1,10 @@
-def test_successful_login(login_page, driver):
+def test_successful_login(login_page):
     login_page.enter_username("standard_user")
     login_page.enter_password("secret_sauce")
     login_page.click_login()  
     
     # Verify successful login by checking for URL change
-    assert "inventory.html" in driver.current_url
+    assert "inventory.html" in login_page.driver.current_url
 
 def test_incorrect_username(login_page):
     login_page.enter_username("wrong_user")
