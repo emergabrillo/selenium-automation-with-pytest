@@ -1,12 +1,3 @@
-import pytest
-from pages.login_page import LoginPage
-
-@pytest.fixture
-def login_page(driver, base_url):
-    """Automatically loads the base URL and returns the initialized Page Object."""
-    driver.get(base_url)
-    return LoginPage(driver)
-
 def test_successful_login(login_page, driver):
     login_page.enter_username("standard_user")
     login_page.enter_password("secret_sauce")
