@@ -75,3 +75,27 @@ This framework leverages `pytest-html` to capture system metrics, logs, and fail
 To run your test suite at maximum speed in parallel across 3 CPU workers, entirely headlessly, and generate a self-contained report:
 ```bash
 pytest -n 3 --headless --html=reports/report.html --self-contained-html
+```
+
+## 📂 Project Structure
+```text
+├── pages/
+│   ├── __init__.py
+│   ├── base_page.py
+│   ├── inventory_page.py
+│   └── login_page.py
+├── tests/
+│   ├── __init__.py
+│   ├── conftest.py
+│   ├── test_inventory.py
+│   └── test_login.py
+├── .gitignore
+├── README.md
+├── pytest.ini
+└── requirements.txt
+```
+
+## 🛠️ Technical Highlights & Problem Solving
+* **Flakiness Mitigation:** Addressed asynchronous state changes in cart interactions by bypassing standard WebDriver wait limitations with custom expected conditions and JavaScript execution hooks to handle stubborn DOM states.
+
+* **CI-Ready Pipeline Design:** Decoupled reporting and environment logic to ensure the framework can easily drop into GitHub Actions, GitLab CI, or Jenkins pipelines.
