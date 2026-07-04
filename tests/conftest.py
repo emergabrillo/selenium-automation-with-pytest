@@ -4,16 +4,29 @@ from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from pages.login_page import LoginPage
 
+def pytest_addoption(parser):
+    # Register custom command-line option.
+    parser.addoption(
+        "--headless", 
+        action="store_true", 
+        default=False, 
+        help="Run tests in headless mode"
+    )
+
 @pytest.fixture(scope="session")
 def base_url():
     return "https://www.saucedemo.com"  # Base URL and login page
 
 @pytest.fixture(scope="function")
-def driver():
+def driver(request):
     options = Options()
-    # Uncomment the following line to enable headless mode for the browser
-    # options.add_argument("--headless")
-    options.add_argument("window-size=1920,1080") 
+    options.add_argument("--window-size=1920,1080")
+    options.add_argument("--start-maximized")
+    
+    # Run in headless mode if specified 
+    if request.config.getoption("--headless"):
+        options.add_argument("--headless")
+        options.add_argument("--disable-gpu")
 
     # Built-in Selenium Manager will fetch matching driver binaries
     driver = webdriver.Chrome(options=options) 
