@@ -25,8 +25,10 @@ def driver(request):
     
     # Run in headless mode if specified 
     if request.config.getoption("--headless"):
-        options.add_argument("--headless")
+        options.add_argument("--headless=new")
         options.add_argument("--disable-gpu")
+        #for headless mode, position the window off-screen to avoid display issues
+        options.add_argument("--window-position=-2400,-2400")
 
     # Built-in Selenium Manager will fetch matching driver binaries
     driver = webdriver.Chrome(options=options) 
